@@ -1,0 +1,61 @@
+{
+  "name": "dsh-cad-review",
+  "version": "0.1.0",
+  "description": "Evidence-first ASCII DXF inspection and rule-backed CAD review for DeepSeek Harness",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./dxf": "./lib/dxf.mjs"
+  },
+  "bin": {
+    "dsh-cad-review": "./bin/dsh-cad-review.mjs"
+  },
+  "files": [
+    ".codex-plugin/",
+    "index.js",
+    "lib/",
+    "bin/",
+    "cordis.patch.yml",
+    "examples/",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "smoke:plugin": "node test/plugin-smoke.mjs",
+    "smoke:cli": "node bin/dsh-cad-review.mjs review test/fixtures/problematic.dxf --policy examples/strict-mm-policy.json"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dongsheng123132/dsh-cad-review.git"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cad",
+    "dxf",
+    "drawing-review",
+    "evidence"
+  ]
+}

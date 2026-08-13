@@ -1,0 +1,11 @@
+{
+  "requiredLayers": ["WALL"],
+  "forbiddenLayers": ["DEFPOINTS"],
+  "forbiddenEntityTypes": ["3DSOLID"],
+  "requireClosedPolylines": true,
+  "minTextHeight": 2.5,
+  "maxDrawingSpan": 1000,
+  "requiredInsUnits": 4,
+  "maxEntities": 100000,
+  "maxIssues": 500
+}
