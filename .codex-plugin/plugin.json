@@ -1,0 +1,17 @@
+{
+  "name": "dsh-cad-review",
+  "version": "0.1.0",
+  "description": "Evidence-first DXF extraction and deterministic CAD rule review for DeepSeek Harness and Codex",
+  "author": {
+    "name": "hfshfg"
+  },
+  "interface": {
+    "displayName": "DSH CAD Review",
+    "shortDescription": "Extract DXF evidence and run deterministic CAD checks.",
+    "longDescription": "Reads ASCII DXF into source-hashed structured evidence and reports rule violations with entity IDs, layers and coordinates.",
+    "developerName": "hfshfg",
+    "category": "Developer Tools",
+    "capabilities": ["DXF extraction", "CAD rule review", "Evidence reports"],
+    "defaultPrompt": "Review this CAD drawing from structured DXF evidence and cite every finding by entity ID, layer, and location."
+  }
+}
