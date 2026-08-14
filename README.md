@@ -1,5 +1,10 @@
 # dsh-cad-review
 
+[![CI](https://github.com/dongsheng123132/dsh-cad-review/actions/workflows/check.yml/badge.svg)](https://github.com/dongsheng123132/dsh-cad-review/actions/workflows/check.yml)
+[![MIT license](https://img.shields.io/github/license/dongsheng123132/dsh-cad-review)](LICENSE)
+[![Node.js 22+](https://img.shields.io/badge/Node.js-%E2%89%A522-339933?logo=nodedotjs&logoColor=white)](package.json)
+[![Awesome DSH Plugins](https://img.shields.io/badge/Awesome_DSH-verified_lab-0969da)](https://github.com/dongsheng123132/awesome-dsh-plugins#2origin-plugin-lab)
+
 Evidence-first ASCII DXF inspection and deterministic CAD rule review for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
 
 This plugin does not infer engineering defects from screenshots. It reads CAD entities, hashes the source drawing, and emits issues tied to entity handle/index, layer, source line range and geometric location. Unsupported entities remain visible as an evidence gap.

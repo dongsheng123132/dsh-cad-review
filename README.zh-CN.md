@@ -1,5 +1,10 @@
 # dsh-cad-review
 
+[![CI](https://github.com/dongsheng123132/dsh-cad-review/actions/workflows/check.yml/badge.svg)](https://github.com/dongsheng123132/dsh-cad-review/actions/workflows/check.yml)
+[![MIT 许可证](https://img.shields.io/github/license/dongsheng123132/dsh-cad-review)](LICENSE)
+[![Node.js 22+](https://img.shields.io/badge/Node.js-%E2%89%A522-339933?logo=nodedotjs&logoColor=white)](package.json)
+[![Awesome DSH Plugins](https://img.shields.io/badge/Awesome_DSH-%E5%B7%B2%E9%AA%8C%E8%AF%81%E5%AE%9E%E9%AA%8C-0969da)](https://github.com/dongsheng123132/awesome-dsh-plugins/blob/main/README.zh-CN.md#2origin-%E6%8F%92%E4%BB%B6%E5%AE%9E%E9%AA%8C%E5%AE%A4)
+
 面向 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的证据优先 ASCII DXF 检查与确定性 CAD 规则审图插件。
 
 它不从截图猜工程缺陷，而是读取 CAD 实体、计算源图 SHA-256，并把每条问题定位到实体 handle/index、图层、源行号范围和几何坐标。暂不支持的实体会明确成为证据缺口。
