@@ -1,10 +1,11 @@
 {
   "name": "dsh-cad-review",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Evidence-first DXF extraction and deterministic CAD rule review for DeepSeek Harness and Codex",
   "author": {
     "name": "hfshfg"
   },
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "DSH CAD Review",
     "shortDescription": "Extract DXF evidence and run deterministic CAD checks.",
@@ -12,6 +13,6 @@
     "developerName": "hfshfg",
     "category": "Developer Tools",
     "capabilities": ["DXF extraction", "CAD rule review", "Evidence reports"],
-    "defaultPrompt": "Review this CAD drawing from structured DXF evidence and cite every finding by entity ID, layer, and location."
+    "defaultPrompt": ["Review this CAD drawing from structured DXF evidence and cite every finding by entity ID, layer, and location."]
   }
 }

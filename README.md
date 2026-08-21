@@ -9,6 +9,10 @@ Evidence-first ASCII DXF inspection and deterministic CAD rule review for [DeepS
 
 This plugin does not infer engineering defects from screenshots. It reads CAD entities, hashes the source drawing, and emits issues tied to entity handle/index, layer, source line range and geometric location. Unsupported entities remain visible as an evidence gap.
 
+Version 0.2.0 is host-neutral and stock-Cordis-loader safe: it imports no private ToolRuntime helper and exposes no default export, preserving the module-level `inject = ['tools']` contract. `TEXT`/`MTEXT` bodies and malformed numeric tokens are represented only by SHA-256 plus length, so evidence output does not reproduce drawing prose.
+
+This scope complements broader robotics suites such as [dsh-robotic-harness](https://github.com/dingkaihu63/dsh-robotic-harness): that project inventories robot assets and validates URDF/MJCF/SDF workflows, while this plugin remains a small deterministic ASCII-DXF entity/rule evidence layer.
+
 ## Install
 
 ```bash
@@ -44,6 +48,10 @@ Paths must be `.dxf` files relative to `workspaceRoot`. Traversal, symlink escap
 
 The extractor understands LINE, LWPOLYLINE, CIRCLE, ARC, TEXT, MTEXT, POINT and INSERT geometry. Other types are retained and reported as structurally unsupported rather than silently treated as reviewed.
 
+## MCP proof surface
+
+The formal `.mcp.json` declaration exposes `cad_dxf_inspect_inline` and `cad_dxf_review_inline`. They accept an explicit bounded ASCII DXF string, share the same parser and rule core, and return redacted structured evidence entirely in memory. The MCP server cannot read files, access the network, execute drawing content, start subprocesses, or write artifacts.
+
 Checks cover malformed numbers, zero-length lines, non-positive radii, polyline closure and declared vertex count, exact duplicate geometry, required/forbidden layers, forbidden entity types, text height, units, drawing span and entity limits. Severity overrides use stable rule IDs.
 
 ## CLI
@@ -69,7 +77,9 @@ dsh-cad-review review drawing.dxf --policy examples/strict-mm-policy.json
 npm test
 npm run check
 npm run smoke:plugin
+npm run smoke:mcp
 npm run smoke:cli
+DSH_CHECKOUT=/path/to/deepseek-harness npm run smoke:dsh
 ```
 
 MIT

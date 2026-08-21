@@ -17,6 +17,17 @@ test('parser extracts declared units, exact entity locations and drawing bounds'
   assert.deepEqual(summary.entityEvidence[0].location, [5, 5, 0])
   assert.deepEqual(summary.bounds.span, [100, 100, 0])
   assert.equal(summary.extractionComplete, true)
+  assert.equal(JSON.stringify(summary).includes('TOO SMALL'), false)
+  assert.equal(summary.entityEvidence[2].geometry.textLength, 9)
+  assert.equal(summary.entityEvidence[2].geometry.textSha256.length, 64)
+})
+
+test('malformed numeric tokens are disclosed by hash and length, not copied', () => {
+  const parsed = parseDxf('0\nSECTION\n2\nENTITIES\n0\nLINE\n8\n0\n10\nnot-a-secret-number\n20\n0\n11\n1\n21\n1\n0\nENDSEC\n0\nEOF\n')
+  assert.equal(parsed.warnings.length, 1)
+  assert.equal(parsed.warnings[0].evidence.valueLength, 19)
+  assert.equal(parsed.warnings[0].evidence.valueSha256.length, 64)
+  assert.equal(JSON.stringify(parsed.warnings).includes('not-a-secret-number'), false)
 })
 
 test('policy review reports deterministic issues with entity and coordinate evidence', async () => {

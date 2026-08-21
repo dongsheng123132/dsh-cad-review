@@ -9,6 +9,10 @@
 
 它不从截图猜工程缺陷，而是读取 CAD 实体、计算源图 SHA-256，并把每条问题定位到实体 handle/index、图层、源行号范围和几何坐标。暂不支持的实体会明确成为证据缺口。
 
+v0.2.0 的入口已经宿主中立并兼容官方 Cordis Loader：不导入 ToolRuntime 私有辅助包，也不暴露默认导出，从而保留模块级 `inject = ['tools']`。`TEXT/MTEXT` 正文和非法数字 token 只输出 SHA-256 与长度，证据不会复制图纸业务文字。
+
+本插件与更宽的 [dsh-robotic-harness](https://github.com/dingkaihu63/dsh-robotic-harness) 互补：后者覆盖机器人资产清单及 URDF/MJCF/SDF 流程，本插件只做小而确定的 ASCII DXF 实体/规则证据层。
+
 ## 安装
 
 ```bash
@@ -44,6 +48,10 @@ dsh plugin --profile <name> add github:dongsheng123132/dsh-cad-review
 
 提取器理解 LINE、LWPOLYLINE、CIRCLE、ARC、TEXT、MTEXT、POINT、INSERT。其他实体仍会保留并标记为未结构化审查，不会被静默算成已检查。
 
+## MCP 证明表面
+
+正式 `.mcp.json` 声明提供 `cad_dxf_inspect_inline` 与 `cad_dxf_review_inline`。它们接收显式、有大小上限的 ASCII DXF 字符串，共用同一解析与规则核心，纯内存返回脱敏结构证据。MCP 不能读文件、联网、执行图纸内容、启动子进程或写产物。
+
 当前检查包括：错误数字、零长度直线、非正半径、多段线闭合与声明顶点数、完全重复几何、必需/禁用图层、禁用实体类型、文字高度、单位、图幅跨度和实体数量。严重级别可按稳定 Rule ID 覆盖。
 
 ## CLI
@@ -69,7 +77,9 @@ dsh-cad-review review drawing.dxf --policy examples/strict-mm-policy.json
 npm test
 npm run check
 npm run smoke:plugin
+npm run smoke:mcp
 npm run smoke:cli
+DSH_CHECKOUT=/path/to/deepseek-harness npm run smoke:dsh
 ```
 
 MIT
