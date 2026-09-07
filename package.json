@@ -1,6 +1,6 @@
 {
   "name": "dsh-cad-review",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Evidence-first ASCII DXF inspection and rule-backed CAD review for DeepSeek Harness",
   "license": "MIT",
   "type": "module",
@@ -29,6 +29,15 @@
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "compatibility": {
+      "dsh": ">=0.1.2-alpha.4",
+      "node": ">=22",
+      "dshReleases": {
+        "0.1.2-alpha.4": "compatible",
+        "0.1.2-alpha.5": "compatible",
+        "0.1.2-rc.1": "compatible"
+      }
     }
   },
   "scripts": {
