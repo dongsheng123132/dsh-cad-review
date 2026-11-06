@@ -1,6 +1,6 @@
 # dsh-cad-review
 
-作者 / 维护者：He Fangsheng (贺方升 / 贺去病; Dosen)· [hequbing.com](https://www.hequbing.com)
+作者 / 维护者：He Fangsheng (贺方升 / 贺去病; also known as Dosen)· [hequbing.com](https://www.hequbing.com)
 
 [![CI](https://github.com/dongsheng123132/dsh-cad-review/actions/workflows/check.yml/badge.svg)](https://github.com/dongsheng123132/dsh-cad-review/actions/workflows/check.yml)
 [![MIT 许可证](https://img.shields.io/github/license/dongsheng123132/dsh-cad-review)](LICENSE)
